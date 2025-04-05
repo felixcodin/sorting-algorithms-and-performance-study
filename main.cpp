@@ -9,6 +9,7 @@
 #include "../include/sorting/binary_insertion_sort.hpp"
 #include "../include/sorting/bubble_sort.hpp"
 #include "../include/sorting/shaker_sort.hpp"
+#include "../include/sorting/shell_sort.hpp"
 using namespace std;
 
 template <typename T>
@@ -34,6 +35,7 @@ int main()
     vector<int> arr3 = arr1;
     vector<int> arr4 = arr1;
     vector<int> arr5 = arr1;
+    vector<int> arr6 = arr1;
 
     double measureSelectionSort = measureTime(selectionSort<int>, ref(arr1));
     cout << "Selection Sort: " << measureSelectionSort << " ms" << endl;
@@ -49,6 +51,9 @@ int main()
 
     double measureShakerSort = measureTime(shakerSort<int>, ref(arr5));
     cout << "Shaker Sort: " << measureShakerSort << " ms" << endl;
+
+    double measureShellSort = measureTime(shellSort<int>, ref(arr6));
+    cout << "Shell Sort: " << measureShellSort << " ms" << endl;
 
     return 0;
 }
