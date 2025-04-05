@@ -7,7 +7,7 @@ void insertionSort(vector<T> &arr)
     for (size_t i = 1; i < n; i++)
     {
         size_t j = i;
-        size_t key = arr[i];
+        T key = arr[i];
         while (j > 0 && key < arr[j])
         {
             arr[j] = arr[j - 1];
@@ -16,3 +16,5 @@ void insertionSort(vector<T> &arr)
         arr[j] = key;
     }
 }
+
+template void insertionSort<int>(vector<int> &arr);

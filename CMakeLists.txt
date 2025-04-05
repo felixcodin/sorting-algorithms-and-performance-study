@@ -15,7 +15,7 @@ file(GLOB_RECURSE SRC_FILES
     "main.cpp"
 )
 
-add_executable(BTL01_Sort main.cpp ${SRC_FILES})
+add_executable(BTL_Sort main.cpp ${SRC_FILES})
 
 if(TEST_FILES AND TEST_FILES)
     add_executable(SortTests ${TEST_FILES} ${SRC_FILES})

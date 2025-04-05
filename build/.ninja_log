@@ -1,0 +1,21 @@
+# ninja log v6
+73	286	7655691418581142	CMakeFiles/BTL_Sort.dir/src/sorting/shaker_sort.cpp.obj	6aae6531dd126042
+85	263	7655691418691121	CMakeFiles/BTL_Sort.dir/src/sorting/std_sort.cpp.obj	2c3dcf9d0a2023c0
+35	230	7655691418193079	CMakeFiles/BTL_Sort.dir/src/sorting/heap_sort.cpp.obj	39f0f4c93bc98f0a
+43	287	7655691418271071	CMakeFiles/BTL_Sort.dir/src/sorting/merge_sort.cpp.obj	3cb930937dfa7db7
+28	256	7655691418128577	CMakeFiles/BTL_Sort.dir/src/sorting/bubble_sort.cpp.obj	e2c1c4ed082baad9
+50	295	7655691418351079	CMakeFiles/BTL_Sort.dir/src/sorting/quick_sort.cpp.obj	ed614f13e37c2b88
+47	263	7655691418311081	CMakeFiles/BTL_Sort.dir/src/sorting/natural_merge_sort.cpp.obj	c26035e5680ba61d
+100	521	7655691418841080	CMakeFiles/BTL_Sort.dir/src/utils/timer.cpp.obj	c35ad21a8e1575d6
+31	279	7655691418148566	CMakeFiles/BTL_Sort.dir/src/sorting/counting_sort.cpp.obj	2221d2dce1ed75c9
+42	190	7655695403417366	CMakeFiles/BTL_Sort.dir/src/sorting/insertion_sort.cpp.obj	35a4c0c903cbc2dd
+90	296	7655691418741108	CMakeFiles/BTL_Sort.dir/src/utils/checker.cpp.obj	98ad1123bd98402f
+59	303	7655691418461130	CMakeFiles/BTL_Sort.dir/src/sorting/radix_sort.cpp.obj	1904da47e95d4a2a
+81	307	7655691418651121	CMakeFiles/BTL_Sort.dir/src/sorting/shell_sort.cpp.obj	970b367ef9e74a21
+39	333	7655700115012530	CMakeFiles/BTL_Sort.dir/src/sorting/binary_insertion_sort.cpp.obj	8faff9c48a7997dc
+95	798	7655691418791095	CMakeFiles/BTL_Sort.dir/src/utils/data_generator.cpp.obj	473bdb227e8a85e1
+68	471	7655691418531122	CMakeFiles/BTL_Sort.dir/src/sorting/selection_sort.cpp.obj	88ae628f5a9374fb
+34	594	7655701935446725	CMakeFiles/BTL_Sort.dir/main.cpp.obj	71a46290a362457
+595	701	7655701941048792	BTL_Sort.exe	c0f4378838e696bf
+37	548	7655702062231410	CMakeFiles/BTL_Sort.dir/main.cpp.obj	71a46290a362457
+548	668	7655702067344674	BTL_Sort.exe	c0f4378838e696bf
