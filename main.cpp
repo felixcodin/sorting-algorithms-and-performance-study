@@ -10,6 +10,7 @@
 #include "../include/sorting/bubble_sort.hpp"
 #include "../include/sorting/shaker_sort.hpp"
 #include "../include/sorting/shell_sort.hpp"
+#include "../include/sorting/heap_sort.hpp"
 using namespace std;
 
 template <typename T>
@@ -36,7 +37,9 @@ int main()
     vector<int> arr4 = arr1;
     vector<int> arr5 = arr1;
     vector<int> arr6 = arr1;
+    vector<int> arr7 = arr1;
 
+    cout  << "******Group 1 ******" <<endl;
     double measureSelectionSort = measureTime(selectionSort<int>, ref(arr1));
     cout << "Selection Sort: " << measureSelectionSort << " ms" << endl;
 
@@ -54,6 +57,10 @@ int main()
 
     double measureShellSort = measureTime(shellSort<int>, ref(arr6));
     cout << "Shell Sort: " << measureShellSort << " ms" << endl;
+
+    cout << "******Group 2******" <<  endl;
+    double measureHeapSort = measureTime(heapSort<int>, ref(arr7));
+    cout << "Heap Sort: " << measureHeapSort << " ms" << endl;
 
     return 0;
 }
