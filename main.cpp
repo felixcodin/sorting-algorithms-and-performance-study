@@ -15,6 +15,7 @@
 #include "../include/sorting/natural_merge_sort.hpp"
 #include "../include/sorting/quick_sort.hpp"
 #include "../include/sorting/std_sort.hpp"
+#include "../include/sorting/radix_sort.hpp"
 using namespace std;
 
 template <typename T>
@@ -46,6 +47,7 @@ int main()
     vector<int> arr9 = arr1;
     vector<int> arr10 = arr1;
     vector<int> arr11 = arr1;
+    vector<int> arr12 = arr1;
 
     cout  << "******Group 1 ******" <<endl;
     double measureSelectionSort = measureTime(selectionSort<int>, ref(arr1));
@@ -81,6 +83,9 @@ int main()
 
     double measureSTDSort = measureTime(stdSort<int>, ref(arr11));
     cout << "std Sort: " << measureSTDSort << " ms" << endl;
+
+    double measureRadixSort = measureTime(radixSort<int>, ref(arr12));
+    cout << "Radix Sort: " << measureRadixSort << " ms" << endl;
 
     return 0;
 }
