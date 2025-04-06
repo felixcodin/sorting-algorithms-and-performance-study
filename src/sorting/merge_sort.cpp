@@ -1,7 +1,7 @@
 #include "../include/sorting/merge_sort.hpp"
 #include <algorithm>
 
-int nextGap(int gap)
+static int nextGap(int gap)
 {
     if (gap <= 1)
     {
