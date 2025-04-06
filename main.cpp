@@ -12,6 +12,7 @@
 #include "../include/sorting/shell_sort.hpp"
 #include "../include/sorting/heap_sort.hpp"
 #include "../include/sorting/merge_sort.hpp"
+#include "../include/sorting/natural_merge_sort.hpp"
 using namespace std;
 
 template <typename T>
@@ -40,6 +41,7 @@ int main()
     vector<int> arr6 = arr1;
     vector<int> arr7 = arr1;
     vector<int> arr8 = arr1;
+    vector<int> arr9 = arr1;
 
     cout  << "******Group 1 ******" <<endl;
     double measureSelectionSort = measureTime(selectionSort<int>, ref(arr1));
@@ -66,6 +68,10 @@ int main()
 
     double measureMergeSort = measureTime(mergeSort<int>, ref(arr8));
     cout << "Merge Sort: " << measureMergeSort << " ms" << endl;
+
+    double measureNaturalMergeSort = measureTime(naturalMergeSort<int>, ref(arr9));
+    cout << "Natural Merge Sort: " << measureNaturalMergeSort << " ms" << endl;
+    cout << is_sorted(arr9.begin(), arr9.end());
 
     return 0;
 }
