@@ -3,8 +3,6 @@
 
 #include <vector>
 
-int nextGap(int gap);
-
 template <typename T>
 void mergeSort(std::vector<T> &arr);
 
