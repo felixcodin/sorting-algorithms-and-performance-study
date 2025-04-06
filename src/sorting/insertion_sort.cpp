@@ -3,12 +3,12 @@
 template <typename T>
 void insertionSort(vector<T> &arr)
 {
-    size_t n = arr.size();
-    for (size_t i = 1; i < n; i++)
+    int n = arr.size();
+    for (int i = 1; i < n; i++)
     {
-        size_t j = i;
+        int j = i;
         T key = arr[i];
-        while (j > 0 && key < arr[j])
+        while (j > 0 && key < arr[j - 1])
         {
             arr[j] = arr[j - 1];
             j -= 1;
