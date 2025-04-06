@@ -11,6 +11,7 @@
 #include "../include/sorting/shaker_sort.hpp"
 #include "../include/sorting/shell_sort.hpp"
 #include "../include/sorting/heap_sort.hpp"
+#include "../include/sorting/merge_sort.hpp"
 using namespace std;
 
 template <typename T>
@@ -38,6 +39,7 @@ int main()
     vector<int> arr5 = arr1;
     vector<int> arr6 = arr1;
     vector<int> arr7 = arr1;
+    vector<int> arr8 = arr1;
 
     cout  << "******Group 1 ******" <<endl;
     double measureSelectionSort = measureTime(selectionSort<int>, ref(arr1));
@@ -61,6 +63,9 @@ int main()
     cout << "******Group 2******" <<  endl;
     double measureHeapSort = measureTime(heapSort<int>, ref(arr7));
     cout << "Heap Sort: " << measureHeapSort << " ms" << endl;
+
+    double measureMergeSort = measureTime(mergeSort<int>, ref(arr8));
+    cout << "Merge Sort: " << measureMergeSort << " ms" << endl;
 
     return 0;
 }
