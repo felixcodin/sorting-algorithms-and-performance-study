@@ -7,4 +7,6 @@
 template <typename T>
 std::vector<T> generateRandomVector(int size, int min = 0, int max = 1000);
 
+int generateRandomNumber(int min, int max);
+
 #endif
