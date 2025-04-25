@@ -16,6 +16,7 @@
 #include "../include/sorting/quick_sort.hpp"
 #include "../include/sorting/std_sort.hpp"
 #include "../include/sorting/radix_sort.hpp"
+#include "../include/sorting/counting_sort.hpp"
 using namespace std;
 
 template <typename T>
@@ -48,8 +49,9 @@ int main()
     vector<int> arr10 = arr1;
     vector<int> arr11 = arr1;
     vector<int> arr12 = arr1;
+    vector<int> arr13 = arr1;
 
-    cout  << "******Group 1 ******" <<endl;
+    cout  << "******Group 1******" <<endl;
     double measureSelectionSort = measureTime(selectionSort<int>, ref(arr1));
     cout << "Selection Sort: " << measureSelectionSort << " ms" << endl;
 
@@ -84,8 +86,14 @@ int main()
     double measureSTDSort = measureTime(stdSort<int>, ref(arr11));
     cout << "std Sort: " << measureSTDSort << " ms" << endl;
 
+    cout << "******Group 3******" << endl;
+
     double measureRadixSort = measureTime(radixSort<int>, ref(arr12));
     cout << "Radix Sort: " << measureRadixSort << " ms" << endl;
+
+    double measureCountingSort = measureTime(countingSort<int>, ref(arr13));
+    cout << "Counting Sort: " << measureCountingSort << " ms" << endl;
+    cout << "**" << is_sorted(arr13.begin(), arr13.end());
 
     return 0;
 }
