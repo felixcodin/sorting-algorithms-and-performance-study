@@ -93,7 +93,13 @@ int main()
 
     double measureCountingSort = measureTime(countingSort<int>, ref(arr13));
     cout << "Counting Sort: " << measureCountingSort << " ms" << endl;
-    cout << "**" << is_sorted(arr13.begin(), arr13.end());
+
+    vector<int> vtt = generateAlreadySortedVector<int>(20, 0, 10000);
+    for (int num : vtt)
+    {
+        cout << num << " ";
+    }
+
 
     return 0;
 }

@@ -1,5 +1,5 @@
 #include "../include/utils/data_generator.hpp"
-#include<numeric>
+#include <numeric>
 
 std::random_device rd;
 std::mt19937 gen(rd());
@@ -36,16 +36,19 @@ std::vector<T> generateAlreadySortedVector(int size, int mn, int mx)
     }
 
     std::vector<T> S(size);
-    std::partion_sum(vec.begin(), vec.end(), S.begin());
+    std::partial_sum(vec.begin(), vec.end(), S.begin());
     T prefixSum = S[size - 1];
 
     std::vector<T> res(size);
     T range = mx - mn;
     for (int i = 0; i < size; i++)
     {
-        double u = S[i] / T;
-        res[i] = mn + int(u * range);
+        double u = static_cast<double>(S[i] / static_cast<double>(prefixSum));
+        res[i] = mn + static_cast<T>(u * range);
     }
+    
+    return res;
 }
 
+template std::vector<int> generateAlreadySortedVector<int>(int, int, int);
 template std::vector<int> generateRandomVector<int>(int, int, int);
