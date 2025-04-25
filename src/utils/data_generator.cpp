@@ -1,4 +1,5 @@
 #include "../include/utils/data_generator.hpp"
+#include <algorithm>
 #include <numeric>
 
 std::random_device rd;
@@ -24,7 +25,7 @@ int generateRandomNumber(int min, int max)
     return distribution(gen);
 }
 
-template<typename T>
+template <typename T>
 std::vector<T> generateAlreadySortedVector(int size, int mn, int mx)
 {
     std::vector<T> vec(size);
@@ -50,5 +51,38 @@ std::vector<T> generateAlreadySortedVector(int size, int mn, int mx)
     return res;
 }
 
-template std::vector<int> generateAlreadySortedVector<int>(int, int, int);
+template <typename T>
+std::vector<T> generateReverseSortedVector(int size, int mn, int mx)
+{
+    std::vector<T> resTemp = generateAlreadySortedVector<T>(size, mn, mx);
+    std::vector<T> res(size);
+    for(int i = 0; i < size; i++)
+    {
+        res[i] = resTemp[size - i - 1];
+    }
+
+    return res;
+}
+
+template <typename T>
+std::vector<T> generateNearlySortedVector(int size, int mn, int mx)
+{
+    std::vector<T> res = generateAlreadySortedVector<T>(size, mn, mx);
+
+    std::uniform_int_distribution<> dis(0, size - 2);
+    
+    int swaps = size/5;
+
+    for (int i = 0; i < swaps; i++)
+    {
+        int index = dis(gen);
+        std::swap(res[index], res[index + 1]);
+    }
+
+    return res;
+}
+
 template std::vector<int> generateRandomVector<int>(int, int, int);
+template std::vector<int> generateAlreadySortedVector<int>(int, int, int);
+template std::vector<int> generateReverseSortedVector<int>(int, int, int);
+template std::vector<int> generateNearlySortedVector<int>(int, int, int);

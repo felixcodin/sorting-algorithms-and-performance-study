@@ -12,4 +12,10 @@ int generateRandomNumber(int min, int max);
 template<typename T>
 std::vector<T> generateAlreadySortedVector(int size, int mn, int mx);
 
+template<typename T>
+std::vector<T> generateReverseSortedVector(int size, int mn, int mx);
+
+template<typename T>
+std::vector<T> generateNearlySortedVector(int size, int mn, int mx);
+
 #endif
