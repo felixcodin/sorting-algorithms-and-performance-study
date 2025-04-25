@@ -1,5 +1,5 @@
 #include "../include/utils/timer.hpp"
-
+#include <functional>
 
 template <typename Func, typename Arg>
 double measureTime(Func func, Arg &&arg)
@@ -15,4 +15,4 @@ double measureTime(Func func, Arg &&arg)
     return duration.count() / 1000.0;
 }
 
-template double measureTime<void(*)(std::vector<int>&), std::reference_wrapper<std::vector<int>>>(void (*)(std::vector<int>&), std::reference_wrapper<std::vector<int>>&&);
+template double measureTime<std::function<void(std::vector<int>&)>, std::reference_wrapper<std::vector<int>>>(std::function<void(std::vector<int>&)>, std::reference_wrapper<std::vector<int>>&&);
