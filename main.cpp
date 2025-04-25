@@ -2,8 +2,9 @@
 #include <vector>
 #include <algorithm>
 
-#include "../include/utils/timer.hpp"
+//#include "../include/utils/timer.hpp"
 #include "../include/utils/data_generator.hpp"
+#include "../include/utils/checker.hpp"
 #include "../include/sorting/selection_sort.hpp"
 #include "../include/sorting/insertion_sort.hpp"
 #include "../include/sorting/binary_insertion_sort.hpp"
@@ -19,16 +20,6 @@
 #include "../include/sorting/counting_sort.hpp"
 using namespace std;
 
-template <typename T>
-void printArr(vector<T> arr)
-{
-    for (T a : arr)
-    {
-        cout << a << " ";
-    }
-    cout << endl;
-}
-
 int main()
 {
     int n, k;
@@ -37,69 +28,42 @@ int main()
     cout << "Enter [0, k] (k > 10^9): k = ";
     cin >> k;
 
-    vector<int> arr1 = generateRandomVector<int>(n, 0, k);
-    vector<int> arr2 = arr1;
-    vector<int> arr3 = arr1;
-    vector<int> arr4 = arr1;
-    vector<int> arr5 = arr1;
-    vector<int> arr6 = arr1;
-    vector<int> arr7 = arr1;
-    vector<int> arr8 = arr1;
-    vector<int> arr9 = arr1;
-    vector<int> arr10 = arr1;
-    vector<int> arr11 = arr1;
-    vector<int> arr12 = arr1;
-    vector<int> arr13 = arr1;
+    int maxElement = k;
+    int minElement = 0;
+    int sizeOfGroupOne = n;
+    int sizeOfGroupTwoAndThree = n*10*10;
 
-    cout  << "******Group 1******" <<endl;
-    double measureSelectionSort = measureTime(selectionSort<int>, ref(arr1));
-    cout << "Selection Sort: " << measureSelectionSort << " ms" << endl;
+    vector<int> originalVectorGroupOne = generateRandomVector<int>(sizeOfGroupOne, minElement, maxElement);
+    vector<int> originalVectorGroupTwoAndThree = generateRandomVector<int>(sizeOfGroupTwoAndThree, minElement, maxElement);
+    
+    cout << "*********Group 1********" << endl;
+    
+    vector<pair<string, function<void(vector<int>&)>>> algorithmsGroupOne = {
+        {"Selection Sort", selectionSort<int>},
+        {"Insertion Sort", insertionSort<int>},
+        {"BinaryInsertion Sort", binaryInsertionSort<int>},
+        {"Bubble Sort", bubbleSort<int>},
+        {"Shaker Sort", shakerSort<int>},
+        {"Shell Sort", shellSort<int>}
+    };
 
-    double measureInsertionSort = measureTime(insertionSort<int>,  ref(arr2));
-    cout << "Insertion Sort: " << measureInsertionSort << " ms" << endl;
+    cout << "*********Group 2*********" << endl;
+    vector<pair<string, function<void(vector<int>&)>>> algorithmsGroupTwo = {
+        {"Heap Sort", heapSort<int>},
+        {"Merge Sort", mergeSort<int>},
+        {"Natural Merge Sort", naturalMergeSort<int>},
+        {"Quick Sort", quickSort<int>},
+        {"std::sort", stdSort<int>}
+    };
 
-    double measureBinaryInsertionSort = measureTime(binaryInsertionSort<int>, ref(arr3));
-    cout << "Binary Insertion Sort: " << measureBinaryInsertionSort << " ms" << endl;
+    vector<pair<string, function<void(vector<int>&)>>> algorithmsGroupThree = {
+        {"Radix Sort", radixSort<int>},
+        {"Counting Sort", countingSort<int>}
+    };
 
-    double measureBubbleSort = measureTime(bubbleSort<int>, ref(arr4));
-    cout << "Bubble Sort: " << measureBubbleSort << " ms" << endl;
-
-    double measureShakerSort = measureTime(shakerSort<int>, ref(arr5));
-    cout << "Shaker Sort: " << measureShakerSort << " ms" << endl;
-
-    double measureShellSort = measureTime(shellSort<int>, ref(arr6));
-    cout << "Shell Sort: " << measureShellSort << " ms" << endl;
-
-    cout << "******Group 2******" <<  endl;
-    double measureHeapSort = measureTime(heapSort<int>, ref(arr7));
-    cout << "Heap Sort: " << measureHeapSort << " ms" << endl;
-
-    double measureMergeSort = measureTime(mergeSort<int>, ref(arr8));
-    cout << "Merge Sort: " << measureMergeSort << " ms" << endl;
-
-    double measureNaturalMergeSort = measureTime(naturalMergeSort<int>, ref(arr9));
-    cout << "Natural Merge Sort: " << measureNaturalMergeSort << " ms" << endl;
-
-    double measureQuickSort = measureTime(quickSort<int>, ref(arr10));
-    cout << "Quick Sort: " << measureQuickSort << " ms" << endl;
-
-    double measureSTDSort = measureTime(stdSort<int>, ref(arr11));
-    cout << "std Sort: " << measureSTDSort << " ms" << endl;
-
-    cout << "******Group 3******" << endl;
-
-    double measureRadixSort = measureTime(radixSort<int>, ref(arr12));
-    cout << "Radix Sort: " << measureRadixSort << " ms" << endl;
-
-    double measureCountingSort = measureTime(countingSort<int>, ref(arr13));
-    cout << "Counting Sort: " << measureCountingSort << " ms" << endl;
-
-    vector<int> vtt = generateAlreadySortedVector<int>(20, 0, 10000);
-    for (int num : vtt)
-    {
-        cout << num << " ";
-    }
-
+    testSortingAlgorithms(algorithmsGroupOne, originalVectorGroupOne);
+    testSortingAlgorithms(algorithmsGroupTwo, originalVectorGroupTwoAndThree);
+    testSortingAlgorithms(algorithmsGroupThree, originalVectorGroupTwoAndThree);
 
     return 0;
 }
