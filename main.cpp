@@ -35,7 +35,9 @@ int main()
 
     vector<int> originalVectorGroupOne = generateRandomVector<int>(sizeOfGroupOne, minElement, maxElement);
     vector<int> originalVectorGroupTwoAndThree = generateRandomVector<int>(sizeOfGroupTwoAndThree, minElement, maxElement);
-    
+    vector<int> originalSortedVectorGroupOne = generateAlreadySortedVectorGroupOne<int>(sizeOfGroupOne, minElement, maxElement);
+    vector<int> originalSortedVectorGroupOne = generateAlreadySortedVectorGroupTwoAndThree<int>(sizeOfGroupTwoAndThree, minElement, maxElement);
+
     cout << "*********Group 1********" << endl;
     
     vector<pair<string, function<void(vector<int>&)>>> algorithmsGroupOne = {
@@ -56,7 +58,30 @@ int main()
         {"std::sort", stdSort<int>}
     };
 
+    cout << "*********Group 3*********" << endl;
     vector<pair<string, function<void(vector<int>&)>>> algorithmsGroupThree = {
+        {"Radix Sort", radixSort<int>},
+        {"Counting Sort", countingSort<int>}
+    };
+
+    vector<pair<string, function<void(vector<int>&)>>> algorithmsGroupOneWithAlreadySortedVector = {
+        {"Selection Sort", selectionSort<int>},
+        {"Insertion Sort", insertionSort<int>},
+        {"Binary Insertion Sort", binaryInsertionSort<int>},
+        {"Bubble Sort", bubbleSort<int>},
+        {"Shaker Sort", shakerSort<int>},
+        {"Shell Sort", shellSort<int>}
+    };
+
+    vector<pair<string, function<void(vector<int>&)>>> algorithmsGroupTwoWithAlreadySortedVector = {
+        {"Heap Sort", heapSort<int>},
+        {"Merge Sort", mergeSort<int>},
+        {"Natural Merge Sort", naturalMergeSort<int>},
+        {"Quick Sort", quickSort<int>},
+        {"std::sort", stdSort<int>}
+    };
+
+    vector<pair<string, function<void(vector<int>&)>>> algorithmsGroupThreeWithAlreadySortedVector = {
         {"Radix Sort", radixSort<int>},
         {"Counting Sort", countingSort<int>}
     };
@@ -64,6 +89,10 @@ int main()
     testSortingAlgorithms(algorithmsGroupOne, originalVectorGroupOne);
     testSortingAlgorithms(algorithmsGroupTwo, originalVectorGroupTwoAndThree);
     testSortingAlgorithms(algorithmsGroupThree, originalVectorGroupTwoAndThree);
+
+    testSortingAlgorithms(algorithmsGroupOneWithAlreadySortedVector, originalSortedVectorGroupOne);
+    testSortingAlgorithms(algorithmsGroupTwoWithAlreadySortedVecotr, originalSortedVectorGroupTwoAndThree);
+    testSortingAlgorithms(algorithmsGroupThreeWithAlreadySortedVector, originalSortedVectorGroupTwoAndThree);
 
     return 0;
 }
