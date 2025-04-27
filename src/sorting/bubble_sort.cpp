@@ -4,11 +4,11 @@
 template <typename T>
 void bubbleSort(std::vector<T> &arr)
 {
-    size_t n = arr.size();
+    int n = arr.size();
 
-    for (size_t i = 0; i < n - 2; i++)
+    for (int i = 0; i < n - 2; i++)
     {
-        for (size_t j = n - 1; j >= i + 1; j--)
+        for (int j = n - 1; j >= i + 1; j--)
         {
             if (arr[j] < arr[j - 1])
             {
