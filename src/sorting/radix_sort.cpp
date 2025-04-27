@@ -5,23 +5,23 @@ void countSort(std::vector<T> &arr, T exp)
 {
     size_t n = arr.size();
     std::vector<T> output(n);
-    std::vector<T> count(10, 0);
+    std::vector<int> count(10, 0);
 
-    int i = 0;
-    for (i = 0; i < n; i++)
+    for (size_t i = 0; i < n; i++)
     {
         count[(arr[i]/exp) % 10] += 1;
     }
 
-    for (i = 1; i < 10; i++)
+    for (int i = 1; i < 10; i++)
     {
         count[i] += count[i - 1];
     }
 
-    for (i = n - 1; i >= 0; i--)
+    for (int i = n - 1; i >= 0; i--)
     {
-        output[count[(arr[i]/exp) % 10] - 1] = arr[i];
-        count[(arr[i]/exp) % 10] -= 1;
+        int pos = count[(arr[i] / exp) % 10] - 1;
+        output[pos] = arr[i];
+        count[(arr[i] / exp) % 10] -= 1;
     }
 
     arr = output;
@@ -31,9 +31,13 @@ template <typename T>
 void radixSort(std::vector<T> &arr)
 {
     int n = arr.size();
-    int max = 0;
+    if (n == 0)
+    {
+        return ;
+    }
 
     auto it = std::max_element(arr.begin(), arr.end());
+    T max = (it != arr.end()) ? *it : 0;
     if (it != arr.end())
     {
         max = *it;
@@ -43,7 +47,7 @@ void radixSort(std::vector<T> &arr)
         return ;
     }
 
-    for (int exp = 1; max / exp > 0; exp *= 10)
+    for (T exp = 1; max / exp > 0; exp *= 10)
     {
         countSort(arr, exp);
     }
