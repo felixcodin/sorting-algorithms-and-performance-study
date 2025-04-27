@@ -1,29 +1,49 @@
 #include "../include/sorting/merge_sort.hpp"
 #include <algorithm>
 
-static int nextGap(int gap)
-{
-    if (gap <= 1)
-    {
-        return 0;
-    }
-    return (gap / 2) + (gap % 2);
-}
-
 template <typename T>
 void merge(std::vector<T> &arr, int left, int right)
 {
-    int gap = right - left + 1;
+    int mid = left + (right - left) / 2;
+    int leftSize = mid - left + 1;
+    int rightSize = right - mid;
 
-    for (gap = nextGap(gap); gap > 0; gap = nextGap(gap))
+    std::vector<T> leftVector(leftSize);
+    std::vector<T> rightVector(rightSize);
+
+    for (int i = 0; i < leftSize; ++i)
+        leftVector[i] = arr[left + i];
+    for (int i = 0; i < rightSize; ++i)
+        leftVector[i] = arr[mid + 1 + i];
+
+    int i = 0, j = 0, k = left;
+    while (i < leftSize && j < rightSize)
     {
-        for (int i = left; i + gap <= right; i++)
+        if (leftVector[i] <= rightVector[j])
         {
-            if (arr[i] > arr[i + gap])
-            {
-                std::swap(arr[i], arr[i + gap]);
-            }
+            arr[k] = leftVector[i];
+            ++i;
         }
+        else
+        {
+            arr[k] = rightVector[j];
+            ++j;
+        }
+        ++k;
+    }
+
+    while (i < leftSize)
+    {
+        arr[k] = leftVector[i];
+        ++i;
+        ++k;
+    }
+
+    while (j < rightSize)
+    {
+        arr[k] = rightVector[j];
+        ++j;
+        ++k;
     }
 }
 
