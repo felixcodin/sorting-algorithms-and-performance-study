@@ -1,6 +1,8 @@
 #include "../include/utils/data_generator.hpp"
 #include <algorithm>
 #include <numeric>
+#include <stdexcept>
+#include <iostream>
 
 std::random_device rd;
 std::mt19937 gen(rd());
@@ -28,6 +30,11 @@ int generateRandomNumber(int min, int max)
 template <typename T>
 std::vector<T> generateAlreadySortedVector(int size, int mn, int mx)
 {
+    if (size <= 0 || mn > mx)
+    {
+        throw std::invalid_argument("Invalid size or range for generating sorted vector.");
+    }
+
     std::vector<T> vec(size);
     std::uniform_int_distribution<> distribution(mn, mx);
 
@@ -36,15 +43,21 @@ std::vector<T> generateAlreadySortedVector(int size, int mn, int mx)
         vec[i] = distribution(gen);
     }
 
-    std::vector<T> S(size);
-    std::partial_sum(vec.begin(), vec.end(), S.begin());
-    T prefixSum = S[size - 1];
+    std::vector<long long> S(size);
+    std::transform(vec.begin(), vec.end(), S.begin(), [](T x){ return static_cast<long long>(x); });
+    std::partial_sum(S.begin(), S.end(), S.begin());
+    long long prefixSum = S[size - 1];
+
+    if (prefixSum <= 0)
+    {
+        throw std::runtime_error("Prefix sum is non-positive. Check random value generation.");
+    }
 
     std::vector<T> res(size);
     T range = mx - mn;
     for (int i = 0; i < size; i++)
     {
-        double u = static_cast<double>(S[i] / static_cast<double>(prefixSum));
+        double u = static_cast<double>(S[i]) / static_cast<double>(prefixSum);
         res[i] = mn + static_cast<T>(u * range);
     }
     
