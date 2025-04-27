@@ -9,7 +9,7 @@ void testSortingAlgorithm(const std::string &name, std::function<void(std::vecto
 {
     std::vector<T> vec = originalVector;
     double timeTaken = measureTime(sortFunc, ref(vec));
-    std::cout << name << ": " << timeTaken << " ms" << std::endl;
+    std::cout << "\t" << name << ": " << timeTaken << " ms" << std::endl;
 }
 
 template <typename T>
